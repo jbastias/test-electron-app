@@ -1,9 +1,9 @@
 {
-  "name": "electron-boilerplate",
-  "productName": "Electron Boilerplate",
-  "description": "Starter for your Electron application",
+  "name": "test-electron-app",
+  "productName": "Test Electron App",
+  "description": "Starter for your Electron application autoupdates",
   "version": "0.0.0",
-  "author": "Mr. Gumby <mr.gumby@example.com>",
+  "author": "jbastias <jorgebastias@hotmail.com>",
   "copyright": "© 2016, Gumby inc.",
   "homepage": "http://example.com",
   "license": "MIT",

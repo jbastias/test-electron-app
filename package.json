@@ -1,6 +1,6 @@
 {
   "build": {
-    "appId": "com.example.electron-boilerplate",
+    "appId": "com.example.test-electron-app",
     "app-category-type": "your.app.category.type",
     "win": {
       "target": [
