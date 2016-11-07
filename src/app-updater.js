@@ -1,0 +1,79 @@
+import { remote, BrowserWindow as BrowserWindowElectron} from "electron";
+import * as os from "os";
+import { autoUpdater } from "electron-auto-updater";
+// import BrowserWindow = GitHubElectron.BrowserWindow
+// import WebContents = GitHubElectron.WebContents
+
+const { app } = remote;
+
+const UPDATE_SERVER_HOST = "https://shielded-everglades-24834.herokuapp.com"
+
+// console.log('electron: ', _electron);
+// console.log('version: ', _electron.getVersion());
+
+console.log('app: ', app);
+console.log('BrowserWindowElectron: ', BrowserWindowElectron);
+
+function isDev() {
+  console.log('path: ', app.getPath('exe'));
+  return app.getPath("exe").includes("/node_modules/electron-prebuilt/")
+  // return 'isDev()';
+}
+
+console.log('dev: ', isDev());
+
+export default class AppUpdater {
+  constructor(win) {
+    // if (isDev()) {
+    //   return
+    // }
+
+    const platform = os.platform()
+    if (platform === "linux") {
+      return
+    }
+
+    const version = app.getVersion()
+
+    autoUpdater.addListener("update-available", (event) => {
+      console.log("A new update is available")
+    })
+
+    autoUpdater.addListener("update-downloaded", (event, releaseNotes, releaseName, releaseDate, updateURL) => {
+      notify("A new update is ready to install", `Version ${releaseName} is downloaded and will be automatically installed on Quit`)
+      console.log("quitAndInstall")
+      autoUpdater.quitAndInstall()
+      return true
+
+    })
+
+    autoUpdater.addListener("error", (error) => {
+      console.log(error)
+    })
+
+    autoUpdater.addListener("checking-for-update", (event) => {
+      console.log("checking-for-update")
+    })
+
+    autoUpdater.addListener("update-not-available", () => {
+      console.log("update-not-available")
+    })
+
+    if (platform === "darwin") {
+      autoUpdater.setFeedURL(`https://${UPDATE_SERVER_HOST}/update/${platform}_${os.arch()}/${version}`)
+    }
+
+    win.webContents.once("did-frame-finish-load", (event) => {
+      autoUpdater.checkForUpdates()
+    })
+  }
+}
+
+function notify(title, message) {
+  let windows = BrowserWindowElectron.getAllWindows()
+  if (windows.length == 0) {
+    return
+  }
+
+  windows[0].webContents.send("notify", title, message)
+}
