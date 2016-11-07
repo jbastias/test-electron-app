@@ -1,7 +1,7 @@
 {
   "build": {
     "appId": "com.example.test-electron-app",
-    "app-category-type": "your.app.category.type",
+    "category": "Utility",
     "win": {
       "target": [
         "nsis"
