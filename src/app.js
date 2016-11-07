@@ -4,15 +4,14 @@
 // Use new ES6 modules syntax for everything.
 import * as os from 'os'; // native node.js module
 import { remote } from 'electron'; // native electron module
-// import * as remote from 'electron'; // native electron module
 import jetpack from 'fs-jetpack'; // module loaded from npm
 import { greet } from './hello_world/hello_world'; // code authored by you in this project
 import env from './env';
-import { AppUpdater } from './app-updater';
+import AppUpdater from './app-updater';
 
 console.log('Loaded environment variables:', env);
 
-var app = remote.app;
+var { app, BrowserWindow } = remote;
 var appDir = jetpack.cwd(app.getAppPath());
 
 console.log('version: ', app.getVersion());
@@ -28,5 +27,5 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('env-name').innerHTML = env.name;
     document.body.style.backgroundColor = 'green';
     document.body.style.color = 'white';
-    console.log('this: ', this);
+    const updater = new AppUpdater(BrowserWindow.getAllWindows()[0]);
 });

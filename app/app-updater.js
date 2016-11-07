@@ -1,8 +1,11 @@
-import { remote, BrowserWindow as BrowserWindowElectron} from "electron";
-import * as os from "os";
+(function () {'use strict';
+
+var electron = require('electron');
+var os = require('os');
+
 // import BrowserWindow = GitHubElectron.BrowserWindow
 // import WebContents = GitHubElectron.WebContents
-const { app, autoUpdater, BrowserWindow: BrowserWindowElectron } = remote;
+const { app, autoUpdater, BrowserWindow: BrowserWindowElectron } = electron.remote;
 
 const UPDATE_SERVER_HOST = "https://shielded-everglades-24834.herokuapp.com"
 
@@ -11,7 +14,7 @@ function isDev() {
   return app.getPath("exe").includes("/node_modules/electron")
 }
 
-export default class AppUpdater {
+class AppUpdater {
   constructor(win) {
     if (isDev()) {
       console.log('in dev mode');
@@ -67,3 +70,7 @@ function notify(title, message) {
 
   windows[0].webContents.send("notify", title, message)
 }
+
+module.exports = AppUpdater;
+}());
+//# sourceMappingURL=app-updater.js.map
