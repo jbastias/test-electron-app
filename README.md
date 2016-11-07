@@ -5,5 +5,8 @@
 - uses [nuts](https://github.com/GitbookIO/nuts) as install server
 
 ## installlers
-- [mac](https://shielded-everglades-24834.herokuapp.com/download/osx)
-- [win](https://shielded-everglades-24834.herokuapp.com/download/win)
+- [mac latest](https://shielded-everglades-24834.herokuapp.com/download/osx)
+- [win latest](https://shielded-everglades-24834.herokuapp.com/download/win)
+- [atom feed](https://shielded-everglades-24834.herokuapp.com/feed/channel/all.atom)
+
+_* you must restart the nuts server to get the latest version._
