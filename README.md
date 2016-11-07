@@ -9,4 +9,11 @@
 - [win latest](https://shielded-everglades-24834.herokuapp.com/download/win)
 - [atom feed](https://shielded-everglades-24834.herokuapp.com/feed/channel/all.atom)
 
+### notes
+- update the app
+- `GH_TOKEN=c68256567021116dbec8f13b1cf993e6b24c3ba0 node_modules/.bin/build --win --publish onTag`
+- `GH_TOKEN=c68256567021116dbec8f13b1cf993e6b24c3ba0 node_modules/.bin/build --mac --publish onTag`
+- publish the release
+- restart the auto update server
+
 _* you must restart the nuts server to get the latest version._
