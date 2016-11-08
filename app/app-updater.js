@@ -64,25 +64,6 @@ class AppUpdater {
   }
 }
 
-function notify(title, message) {
-  console.log('>>> ', title, message);
-  let windows = BrowserWindowElectron.getAllWindows()
-  console.log('count: ', windows.length);
-  if (windows.length == 0) {
-    return
-  }
-
-  console.log('Notification: ', Notification);
-
-
-  // console.log( windows[0].webContents.send("notify", title, message));
-
-  //
-  // windows[0].webContents.send("notify", title, message)
-}
-
-notify('xxx', 'yyy');
-
 module.exports = AppUpdater;
 }());
 //# sourceMappingURL=app-updater.js.map
