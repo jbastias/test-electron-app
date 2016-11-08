@@ -30,7 +30,7 @@ export default class AppUpdater {
     })
 
     autoUpdater.addListener("update-downloaded", (event, releaseNotes, releaseName, releaseDate, updateURL) => {
-      console.log('>>> update-downloaded', event, releaseNotes, releaseName, releaseDate, updateURL);
+      console.log(`>>> update-downloaded', \nevent: ${event}, \nreleaseNotes: ${releaseNotes}, \nreleaseName: ${releaseName}, \nreleaseDate: ${releaseDate}, \nupdateURL: ${updateURL}`);
     //   notify("A new update is ready to install", `Version ${releaseName} is downloaded and will be automatically installed on Quit`)
     //   console.log("quitAndInstall")
     //   autoUpdater.quitAndInstall()
