@@ -26,20 +26,15 @@ export default class AppUpdater {
     const version = app.getVersion()
 
     autoUpdater.addListener("update-available", (event) => {
-      console.log("A new update is available", event)
+      console.log("A new update is available")
     })
 
     autoUpdater.addListener("update-downloaded", (event, releaseNotes, releaseName, releaseDate, updateURL) => {
-      console.log(`>>> update-downloaded', \nevent: ${event}, \nreleaseNotes: ${releaseNotes}, \nreleaseName: ${releaseName}, \nreleaseDate: ${releaseDate}, \nupdateURL: ${updateURL}`);
-      console.log('and now quit and install');
-    //   notify("A new update is ready to install", `Version ${releaseName} is downloaded and will be automatically installed on Quit`)
-    //   console.log("quitAndInstall")
-    //   autoUpdater.quitAndInstall()
-    //   return true
       if (confirm(`Version ${releaseName} is downloaded and will be automatically installed on Quit`)) {
         autoUpdater.quitAndInstall();
+        return true
       }
-
+      false
     })
 
     autoUpdater.addListener("error", (error) => {
@@ -60,9 +55,6 @@ export default class AppUpdater {
 
     win.webContents.once("did-frame-finish-load", (event) => {
       autoUpdater.checkForUpdates()
-
-    //   setTimeout(() => confirm('xxxx'), 1000);
-
     })
   }
 }
