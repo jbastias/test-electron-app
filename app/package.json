@@ -2,7 +2,7 @@
   "name": "test-electron-app",
   "productName": "Test Electron App",
   "description": "Starter for your Electron application autoupdates",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "author": "jbastias <jorgebastias@hotmail.com>",
   "copyright": "© 2016, Gumby inc.",
   "homepage": "http://example.com",

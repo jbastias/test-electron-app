@@ -37,11 +37,13 @@ export default class AppUpdater {
     })
 
     autoUpdater.addListener("error", (error) => {
+      console.log('wtf son');
       console.log(error)
       throw error;
     })
 
     autoUpdater.addListener("checking-for-update", (event) => {
+        console.log('wtf son');
       console.log("checking-for-update", event)
     })
 
