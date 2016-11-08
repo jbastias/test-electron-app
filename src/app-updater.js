@@ -38,12 +38,17 @@ export default class AppUpdater {
 
     autoUpdater.addListener("error", (error) => {
       console.log('wtf son');
-      console.log(error)
-      throw error;
+      console.log('raw: ', error)
+      console.log('toString: ', error.toString())
+      console.log('JSON: ', JSON.stringify(error, null, 2))
+      Object.keys(error).forEach( key =>
+          console.log(key, error[key])
+      )
+    //   throw error;
     })
 
     autoUpdater.addListener("checking-for-update", (event) => {
-        console.log('wtf son');
+      console.log('wtf son');
       console.log("checking-for-update", event)
     })
 

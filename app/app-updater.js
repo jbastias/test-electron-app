@@ -7,7 +7,7 @@ var os = require('os');
 // import WebContents = GitHubElectron.WebContents
 const { app, autoUpdater, BrowserWindow: BrowserWindowElectron } = electron.remote;
 
-const UPDATE_SERVER_HOST = "https://shielded-everglades-24834.herokuapp.com"
+const UPDATE_SERVER_HOST = "shielded-everglades-24834.herokuapp.com"
 
 function isDev() {
   return false
@@ -29,7 +29,7 @@ class AppUpdater {
     const version = app.getVersion()
 
     autoUpdater.addListener("update-available", (event) => {
-      console.log("A new update is available")
+      console.log("A new update is available", event)
     })
 
     autoUpdater.addListener("update-downloaded", (event, releaseNotes, releaseName, releaseDate, updateURL) => {
@@ -40,12 +40,19 @@ class AppUpdater {
     })
 
     autoUpdater.addListener("error", (error) => {
-      console.log(error)
-        // throw error;
+      console.log('wtf son');
+      console.log('raw: ', error)
+      console.log('toString: ', error.toString())
+      console.log('JSON: ', JSON.stringify(error, null, 2))
+      Object.keys(error).forEach( key =>
+          console.log(key, error[key])
+      )
+    //   throw error;
     })
 
     autoUpdater.addListener("checking-for-update", (event) => {
-      console.log("checking-for-update")
+      console.log('wtf son');
+      console.log("checking-for-update", event)
     })
 
     autoUpdater.addListener("update-not-available", () => {
