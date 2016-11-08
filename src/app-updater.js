@@ -31,25 +31,17 @@ export default class AppUpdater {
 
     autoUpdater.addListener("update-downloaded", (event, releaseNotes, releaseName, releaseDate, updateURL) => {
       notify("A new update is ready to install", `Version ${releaseName} is downloaded and will be automatically installed on Quit`)
-      console.log("quitAndInstall")
-      autoUpdater.quitAndInstall()
-      return true
+    //   console.log("quitAndInstall")
+    //   autoUpdater.quitAndInstall()
+    //   return true
     })
 
     autoUpdater.addListener("error", (error) => {
-      console.log('wtf son');
-      console.log('raw: ', error)
-      console.log('toString: ', error.toString())
-      console.log('JSON: ', JSON.stringify(error, null, 2))
-      Object.keys(error).forEach( key =>
-          console.log(key, error[key])
-      )
-    //   throw error;
+      console.log(JSON.stringify(error, null, 2))
     })
 
     autoUpdater.addListener("checking-for-update", (event) => {
-      console.log('wtf son');
-      console.log("checking-for-update", event)
+      console.log("checking-for-update")
     })
 
     autoUpdater.addListener("update-not-available", () => {
@@ -61,12 +53,14 @@ export default class AppUpdater {
     }
 
     win.webContents.once("did-frame-finish-load", (event) => {
+      console.log('checking for updates...');
       autoUpdater.checkForUpdates()
     })
   }
 }
 
 function notify(title, message) {
+  alert('notify');
   let windows = BrowserWindowElectron.getAllWindows()
   if (windows.length == 0) {
     return
