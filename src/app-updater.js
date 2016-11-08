@@ -2,7 +2,7 @@ import { remote, BrowserWindow as BrowserWindowElectron} from "electron";
 import * as os from "os";
 // import BrowserWindow = GitHubElectron.BrowserWindow
 // import WebContents = GitHubElectron.WebContents
-const { app, autoUpdater, BrowserWindow: BrowserWindowElectron } = remote;
+const { app, autoUpdater, Notification, BrowserWindow: BrowserWindowElectron } = remote;
 
 const UPDATE_SERVER_HOST = "shielded-everglades-24834.herokuapp.com"
 
@@ -31,6 +31,7 @@ export default class AppUpdater {
 
     autoUpdater.addListener("update-downloaded", (event, releaseNotes, releaseName, releaseDate, updateURL) => {
       console.log(`>>> update-downloaded', \nevent: ${event}, \nreleaseNotes: ${releaseNotes}, \nreleaseName: ${releaseName}, \nreleaseDate: ${releaseDate}, \nupdateURL: ${updateURL}`);
+      console.log('and now quit and install');
     //   notify("A new update is ready to install", `Version ${releaseName} is downloaded and will be automatically installed on Quit`)
     //   console.log("quitAndInstall")
     //   autoUpdater.quitAndInstall()
@@ -60,11 +61,19 @@ export default class AppUpdater {
   }
 }
 
-// function notify(title, message) {
-//   let windows = BrowserWindowElectron.getAllWindows()
-//   if (windows.length == 0) {
-//     return
-//   }
-//
-//   windows[0].webContents.send("notify", title, message)
-// }
+function notify(title, message) {
+  console.log('>>> ', title, message);
+  let windows = BrowserWindowElectron.getAllWindows()
+  console.log('count: ', windows.length);
+  if (windows.length == 0) {
+    return
+  }
+
+  // console.log('Notification: ', Notification);
+
+
+  // console.log( windows[0].webContents.send("notify", title, message));
+
+  //
+  // windows[0].webContents.send("notify", title, message)
+}
