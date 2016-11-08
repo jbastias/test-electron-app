@@ -30,9 +30,13 @@ export default class AppUpdater {
     })
 
     autoUpdater.addListener("update-downloaded", (event, releaseNotes, releaseName, releaseDate, updateURL) => {
-      if (confirm(`Version ${releaseName} is downloaded and will be automatically installed on Quit`)) {
-        autoUpdater.quitAndInstall();
-        return true
+      conosole.log('args', arguments);
+      const ud = confirm(`Version ${releaseName} is downloaded and will be automatically installed on Quit`);
+      if (ud) {
+        setTimeout(() => {
+          autoUpdater.quitAndInstall();
+          return true
+        }, 3000);
       }
       false
     })
