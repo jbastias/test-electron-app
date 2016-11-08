@@ -30,11 +30,6 @@ export default class AppUpdater {
     })
 
     autoUpdater.addListener("update-downloaded", function (event, releaseNotes, releaseName, releaseDate, updateURL, quitAndInstall) {
-    //   const args = Array.from(arguments);
-    //   console.log('args looking for function: ', JSON.stringify(args));
-    //   console.log('args length: ', args.length);
-    //   console.log('args last item: ', typeof args[args.length - 1]);
-
       const args = Array.from(arguments);
       console.log(args.length);
       args.forEach( (item, index) => {
@@ -44,15 +39,9 @@ export default class AppUpdater {
 
       const ud = confirm(`Version ${releaseName} is downloaded and will be automatically installed on Quit`);
       if (ud) {
-        setTimeout(() => {
-        //   autoUpdater.quitAndInstall();
-          quitAndInstall();
-          return true
-        }, 10000);
+        quitAndInstall();
       }
-      return false
     })
-
 
     // autoUpdater.addListener("update-downloaded", (event, releaseNotes, releaseName, releaseDate, updateURL) => {
     //   const args = Array.from(arguments);
