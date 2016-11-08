@@ -64,7 +64,7 @@ class AppUpdater {
     win.webContents.once("did-frame-finish-load", (event) => {
       autoUpdater.checkForUpdates()
 
-      setTimeout(() => confirm('xxxx'), 1000);
+    //   setTimeout(() => confirm('xxxx'), 1000);
 
     })
   }
