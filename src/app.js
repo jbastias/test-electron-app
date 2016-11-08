@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('env-name').innerHTML = env.name;
     document.getElementById('version').innerHTML = app.getVersion();
     document.body.style.backgroundColor = 'aqua';
-    document.body.style.color = 'white';
+    document.body.style.color = 'red';
     document.getElementById('greet').style.color = 'blue';
     const updater = new AppUpdater(BrowserWindow.getAllWindows()[0]);
 });
