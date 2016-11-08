@@ -4,7 +4,7 @@ import * as os from "os";
 // import WebContents = GitHubElectron.WebContents
 const { app, autoUpdater, BrowserWindow: BrowserWindowElectron } = remote;
 
-const UPDATE_SERVER_HOST = "https://shielded-everglades-24834.herokuapp.com"
+const UPDATE_SERVER_HOST = "shielded-everglades-24834.herokuapp.com"
 
 function isDev() {
   return false
@@ -36,10 +36,10 @@ export default class AppUpdater {
       return true
     })
 
-    autoUpdater.addListener("error", (error) => {
-      console.log(error)
-        // throw error;
-    })
+    // autoUpdater.addListener("error", (error) => {
+    //   console.log(error)
+    //     // throw error;
+    // })
 
     autoUpdater.addListener("checking-for-update", (event) => {
       console.log("checking-for-update")
