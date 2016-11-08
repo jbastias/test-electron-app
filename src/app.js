@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('platform-info').innerHTML = os.platform();
     document.getElementById('env-name').innerHTML = env.name;
     document.getElementById('version').innerHTML = app.getVersion();
-    document.body.style.backgroundColor = 'blue';
+    document.body.style.backgroundColor = 'red';
     document.body.style.color = 'white';
     document.getElementById('greet').style.color = 'lightblue';
     const updater = new AppUpdater(BrowserWindow.getAllWindows()[0]);

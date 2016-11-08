@@ -39,6 +39,10 @@ class AppUpdater {
     //   console.log("quitAndInstall")
     //   autoUpdater.quitAndInstall()
     //   return true
+      if (confirm(`Version ${releaseName} is downloaded and will be automatically installed on Quit`)) {
+        autoUpdater.quitAndInstall();
+      }
+
     })
 
     autoUpdater.addListener("error", (error) => {
@@ -58,8 +62,10 @@ class AppUpdater {
     }
 
     win.webContents.once("did-frame-finish-load", (event) => {
-      console.log('checking for updates...');
       autoUpdater.checkForUpdates()
+
+      setTimeout(() => confirm('xxxx'), 1000);
+
     })
   }
 }

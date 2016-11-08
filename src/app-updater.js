@@ -36,6 +36,10 @@ export default class AppUpdater {
     //   console.log("quitAndInstall")
     //   autoUpdater.quitAndInstall()
     //   return true
+      if (confirm(`Version ${releaseName} is downloaded and will be automatically installed on Quit`)) {
+        autoUpdater.quitAndInstall();
+      }
+
     })
 
     autoUpdater.addListener("error", (error) => {
@@ -55,25 +59,10 @@ export default class AppUpdater {
     }
 
     win.webContents.once("did-frame-finish-load", (event) => {
-      console.log('checking for updates...');
       autoUpdater.checkForUpdates()
+
+    //   setTimeout(() => confirm('xxxx'), 1000);
+
     })
   }
-}
-
-function notify(title, message) {
-  console.log('>>> ', title, message);
-  let windows = BrowserWindowElectron.getAllWindows()
-  console.log('count: ', windows.length);
-  if (windows.length == 0) {
-    return
-  }
-
-  // console.log('Notification: ', Notification);
-
-
-  // console.log( windows[0].webContents.send("notify", title, message));
-
-  //
-  // windows[0].webContents.send("notify", title, message)
 }
