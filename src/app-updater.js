@@ -26,7 +26,7 @@ export default class AppUpdater {
     const version = app.getVersion()
 
     autoUpdater.addListener("update-available", (event) => {
-      console.log("A new update is available")
+      console.log("A new update is available", event)
     })
 
     autoUpdater.addListener("update-downloaded", (event, releaseNotes, releaseName, releaseDate, updateURL) => {
@@ -36,13 +36,13 @@ export default class AppUpdater {
       return true
     })
 
-    // autoUpdater.addListener("error", (error) => {
-    //   console.log(error)
-    //     // throw error;
-    // })
+    autoUpdater.addListener("error", (error) => {
+      console.log(error)
+      throw error;
+    })
 
     autoUpdater.addListener("checking-for-update", (event) => {
-      console.log("checking-for-update")
+      console.log("checking-for-update", event)
     })
 
     autoUpdater.addListener("update-not-available", () => {
