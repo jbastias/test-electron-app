@@ -30,8 +30,10 @@ export default class AppUpdater {
     })
 
     autoUpdater.addListener("update-downloaded", (event, releaseNotes, releaseName, releaseDate, updateURL) => {
-      var args = [...arguments];
-      console.log('args looking for function', args);
+      const args = Array.from(arguments);
+      console.log('args looking for function: ', JSON.stringify(args));
+      console.log('args length: ', args.length);
+      console.log('args last item: ', typeof args[args.length - 1]);
       const ud = confirm(`Version ${releaseName} is downloaded and will be automatically installed on Quit`);
       if (ud) {
         setTimeout(() => {
