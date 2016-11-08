@@ -34,7 +34,7 @@ class AppUpdater {
 
     autoUpdater.addListener("update-downloaded", (event, releaseNotes, releaseName, releaseDate, updateURL) => {
       console.log('>>> update-downloaded', event, releaseNotes, releaseName, releaseDate, updateURL);
-      notify("A new update is ready to install", `Version ${releaseName} is downloaded and will be automatically installed on Quit`)
+    //   notify("A new update is ready to install", `Version ${releaseName} is downloaded and will be automatically installed on Quit`)
     //   console.log("quitAndInstall")
     //   autoUpdater.quitAndInstall()
     //   return true
@@ -63,15 +63,14 @@ class AppUpdater {
   }
 }
 
-function notify(title, message) {
-  alert('notify');
-  let windows = BrowserWindowElectron.getAllWindows()
-  if (windows.length == 0) {
-    return
-  }
-
-  windows[0].webContents.send("notify", title, message)
-}
+// function notify(title, message) {
+//   let windows = BrowserWindowElectron.getAllWindows()
+//   if (windows.length == 0) {
+//     return
+//   }
+//
+//   windows[0].webContents.send("notify", title, message)
+// }
 
 module.exports = AppUpdater;
 }());
