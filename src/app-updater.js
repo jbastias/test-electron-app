@@ -42,13 +42,12 @@ export default class AppUpdater {
           console.log('item type: ', typeof item);
       });
 
-
       const ud = confirm(`Version ${releaseName} is downloaded and will be automatically installed on Quit`);
       if (ud) {
         setTimeout(() => {
           autoUpdater.quitAndInstall();
           return true
-      }, 10000);
+        }, 10000);
       }
       return false
     })

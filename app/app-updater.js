@@ -32,18 +32,45 @@ class AppUpdater {
       console.log("A new update is available")
     })
 
-    autoUpdater.addListener("update-downloaded", (event, releaseNotes, releaseName, releaseDate, updateURL) => {
-      var args = [...arguments];
-      console.log('args looking for function', args);
+    autoUpdater.addListener("update-downloaded", function (event, releaseNotes, releaseName, releaseDate, updateURL) {
+    //   const args = Array.from(arguments);
+    //   console.log('args looking for function: ', JSON.stringify(args));
+    //   console.log('args length: ', args.length);
+    //   console.log('args last item: ', typeof args[args.length - 1]);
+
+      const args = Array.from(arguments);
+      console.log(args.length);
+      args.forEach( item => {
+          console.log('item: ', item);
+          console.log('item type: ', typeof item);
+      });
+
       const ud = confirm(`Version ${releaseName} is downloaded and will be automatically installed on Quit`);
       if (ud) {
         setTimeout(() => {
           autoUpdater.quitAndInstall();
           return true
-      }, 10000);
+        }, 10000);
       }
-      false
+      return false
     })
+
+
+    // autoUpdater.addListener("update-downloaded", (event, releaseNotes, releaseName, releaseDate, updateURL) => {
+    //   const args = Array.from(arguments);
+    //   console.log('args looking for function: ', JSON.stringify(args));
+    //   console.log('args length: ', args.length);
+    //   console.log('args last item: ', typeof args[args.length - 1]);
+    //   const ud = confirm(`Version ${releaseName} is downloaded and will be automatically installed on Quit`);
+    //   if (ud) {
+    //     setTimeout(() => {
+    //       autoUpdater.quitAndInstall();
+    //       return true
+    //   }, 10000);
+    //   }
+    //   false
+    // })
+
 
     autoUpdater.addListener("error", (error) => {
       console.log(JSON.stringify(error, null, 2))
