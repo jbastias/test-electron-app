@@ -34,6 +34,7 @@ export default class AppUpdater {
       if (ud) {
         quitAndInstall();
       }
+      console.log('me so solly');
     })
 
     // autoUpdater.addListener("update-downloaded", (event, releaseNotes, releaseName, releaseDate, updateURL) => {
